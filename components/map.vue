@@ -20,7 +20,6 @@
       <LGeoJson :geojson="geojson.data" :optionsStyle="geoStyle"></LGeoJson>
     </LMap>
 
-    <p>{{minZoom}}</p>
   </div>
 </template>
 
@@ -79,14 +78,7 @@ const updateMapSize = (width) => {
 
 };
 
-  // if (width.value >= 2200) {
-  //   minZoom.value = 5;
-  //   maxZoom.value = 5;
-  // }
-  const map = mapRef;
-  
 
-    // Optionally, trigger an update of the map here if needed
  
 }
 
@@ -100,8 +92,17 @@ onBeforeMount(() => {
   handleResize();
 });
 
-onBeforeUnmount(() => {
-  // Remove resize event listener when component is unmounted
-  window.removeEventListener('resize', handleResize);
-});
 </script>
+
+
+<style lang="scss">
+
+
+#map{
+  .leaflet-container{
+    background-color: #FFFBF5 !important;
+  }
+}
+
+
+</style>
