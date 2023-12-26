@@ -16,6 +16,22 @@ export default defineNuxtConfig({
   css: [
     "leaflet/dist/leaflet.css",
   ],
+  postcss: {
+    plugins: {
+      
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/styling.scss" as *;'
+        }
+      }
+    }
+  }
   
   
   

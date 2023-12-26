@@ -97,6 +97,11 @@ onBeforeMount(() => {
 
 <style lang="scss">
 
+.leaflet-zoom-animated{
+ 
+  transform: translate3d(-198px, -218px, 0px)  !important;
+}
+
 
 #map{
   .leaflet-container{
@@ -106,3 +111,4 @@ onBeforeMount(() => {
 
 
 </style>
+&
