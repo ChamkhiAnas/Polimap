@@ -15,8 +15,8 @@
             <div class="flex controllers flex-row gap-6 w-full  justify-center items-center m-0 m-auto pt-4 ">
             <h6 class="mt-4">Speed</h6>
             <svg @click="decreaseSpeed()" xmlns="http://www.w3.org/2000/svg" class="block cursor-pointer  mt-4" width="32" height="32" viewBox="0 0 24 24"><path fill="#292c3d" d="m21.5 18l-9-6l9-6zm-10 0l-9-6l9-6z"/></svg>
-            <svg @click="isplayed=true;increaseSlider()" v-if="!isplayed" class="block  mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.475 2 2 6.475 2 12s4.475 10 10 10s10-4.475 10-10S17.525 2 12 2m-2 14.5v-9l6 4.5z"/></svg>
-            <svg @click="isplayed=false;stopSlider()" v-if="isplayed" class="block mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-1 14H9V8h2zm4 0h-2V8h2z"/></svg>
+            <svg @click="animate()" v-if="!isplayed" class="block  mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.475 2 2 6.475 2 12s4.475 10 10 10s10-4.475 10-10S17.525 2 12 2m-2 14.5v-9l6 4.5z"/></svg>
+            <svg @click="stop()" v-if="isplayed" class="block mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-1 14H9V8h2zm4 0h-2V8h2z"/></svg>
 
             <svg @click="increaseSpeed()" xmlns="http://www.w3.org/2000/svg" class="block cursor-pointer  mt-4" width="32" height="32" viewBox="0 0 24 24"><path fill="#292c3d" d="M2.5 16.125v-8.25q0-.45.3-.725t.7-.275q.125 0 .275.025t.275.125l6.2 4.15q.225.15.338.363T10.7 12q0 .25-.112.463t-.338.362l-6.2 4.15q-.125.1-.275.125t-.275.025q-.4 0-.7-.275t-.3-.725m10 0v-8.25q0-.45.3-.725t.7-.275q.125 0 .275.025t.275.125l6.2 4.15q.225.15.338.363T20.7 12q0 .25-.112.463t-.338.362l-6.2 4.15q-.125.1-.275.125t-.275.025q-.4 0-.7-.275t-.3-.725"/></svg>
             <h6 class="mt-4">{{speed}}x</h6>
@@ -239,7 +239,11 @@ h6{
 
     const slider=ref(1);
     const isplayed=ref(false);
-    const speed=ref(1);
+    const islooping=ref(false);
+    const isfinished=ref(true);
+
+
+    const speed=ref(0.25);
     const years=ref(['1963','1970','1977','1984','1993','1997','2002','2007','2011','2016','2021']);
 
 
@@ -259,7 +263,6 @@ h6{
       const sliderInput = document.querySelector('input[type="range"]');
       const sliderValue = document.getElementById('sliderValue');     
       const thumbPosition = ((newValue - sliderInput.min) / (sliderInput.max - sliderInput.min)) * sliderInput.offsetWidth;
-      console.log('thumbPosition',thumbPosition)
       sliderValue.style.left = thumbPosition + 'px';
     }
     
@@ -275,6 +278,38 @@ h6{
       if (parseInt(slider.value) > 1) slider.value = parseInt(slider.value)-1;
     }
 
+    const animate = () =>{
+
+      isplayed.value=true;
+      if (isfinished.value==true)      slider.value=0;
+      islooping.value=true
+      function loop() {
+        if(islooping.value==true){
+          isfinished.value=false
+          slider.value++;
+          if (slider.value < 11) {
+            setTimeout(loop, (speed.value*1000));
+          }
+          else{
+          isplayed.value=false;
+          isfinished.value=true
+
+          }
+        }
+        
+      }
+      loop();
+
+
+    }
+
+
+    const stop = () => {
+      islooping.value=false;
+      isplayed.value=false;
+
+
+    }
 
 
     // const increaseSlider = () => {
