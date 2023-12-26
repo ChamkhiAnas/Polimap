@@ -17,7 +17,7 @@
 
 
     >
-      <LGeoJson :geojson="geojson.data" :optionsStyle="geoStyle"></LGeoJson>
+      <LGeoJson :key="updateColor" :geojson="geojson.data" :optionsStyle="geoStyle"></LGeoJson>
     </LMap>
 
   </div>
@@ -28,9 +28,50 @@
 const { data: geojson } = await useFetch('http://localhost:3000/api/geodata');
 const zoom = ref(6);
 const center = ref([30.427755, -9.598107]);
+const color=ref("red")
+const updateColor=ref(true)
+
+
+const props = defineProps(['slider'])
+
+
+
+   // Watch for changes to the prop
+watch(() => props.slider, (newValue) => {
+    switch (newValue) {
+      case 1:
+      color.value="red"
+      console.log("color value",geoStyle.value.fillColor)
+      break;
+      case 2:
+      geoStyle.value.fillColor ="blue"
+      updateColor.value=!updateColor.value;
+      break;
+      case 3:
+      color.value="blue"
+      geoStyle.value.fillColor ="blue"
+      updateColor.value=!updateColor.value;
+      break;
+      case 4:
+      color.value="violet"
+      geoStyle.value.fillColor ="blue"
+      updateColor.value=!updateColor.value;
+      break
+    default:
+      color.value="red"
+
+      break;
+
+
+    }
+
+});
+
+
+
 
 const geoStyle = ref({
-  fillColor: '#FBC531',
+  fillColor: "red",
   weight: 1,
   opacity: 1,
   color: 'white',

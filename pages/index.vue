@@ -1,7 +1,7 @@
 <template>
     <div class="map-container">
-      <Map class="absolute z-10" />
-      <Slider class="z-20 progress-container relative" />
+      <Map :slider="sliderprop"  class="absolute z-10" />
+      <Slider @UpdateValue="handleSlider" class="z-20 progress-container relative" />
   
   
     </div>
@@ -25,9 +25,16 @@
 
   </style>
     
-    <script>
-    export default {
-      name: 'MapHomePage'
+    <script setup>
+
+    const sliderprop=ref(1);
+
+
+    const handleSlider = (val) =>{
+      sliderprop.value=val
+
     }
+
+   
     </script>
     

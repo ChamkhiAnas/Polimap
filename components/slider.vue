@@ -241,9 +241,9 @@ h6{
     const isplayed=ref(false);
     const islooping=ref(false);
     const isfinished=ref(true);
+    const emit = defineEmits(['UpdateValue'])
 
-
-    const speed=ref(0.25);
+    const speed=ref(1);
     const years=ref(['1963','1970','1977','1984','1993','1997','2002','2007','2011','2016','2021']);
 
 
@@ -258,6 +258,7 @@ h6{
     }
 
     watch(slider, (newValue) => {
+    emit('UpdateValue', newValue)
     newValue=parseInt(newValue)
     if (newValue>0) {
       const sliderInput = document.querySelector('input[type="range"]');
@@ -335,9 +336,8 @@ h6{
     const stop = () => {
       islooping.value=false;
       isplayed.value=false;
-
-
     }
+
 
 
    
