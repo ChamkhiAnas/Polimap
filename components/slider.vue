@@ -288,7 +288,35 @@ h6{
           isfinished.value=false
           slider.value++;
           if (slider.value < 11) {
+
+          switch (speed.value) {
+            case 0.25:
+            setTimeout(loop, 4000);
+              break;
+            case 0.5:
+            setTimeout(loop, 3500);
+              break;
+            case 0.75:
+            setTimeout(loop, 3000);
+              break;
+            case 1:
+            setTimeout(loop, 2500);
+              break;
+            case 1.25:
+            setTimeout(loop, 2000);
+              break;
+            case 1.5:
+            setTimeout(loop, 1500);
+            break;
+            case 1.75:
+            setTimeout(loop, 1000);
+            break;
+            case 2:
+            setTimeout(loop, 500);
+            break;
+            default:
             setTimeout(loop, (speed.value*1000));
+          }
           }
           else{
           isplayed.value=false;
@@ -312,14 +340,7 @@ h6{
     }
 
 
-    // const increaseSlider = () => {
-    //   if (speed.value > 2) speed.value += 0.25;
-    // };
-
-    // const stopSlider = () => {
-
-    // }
-
+   
  
 
 </script>
