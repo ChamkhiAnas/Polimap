@@ -45,7 +45,7 @@ watch(() => props.slider, (newValue) => {
       break;
       case 2:
       geoStyle.value.fillColor ="blue"
-      updateColor.value=!updateColor.value;
+      // updateColor.value=!updateColor.value;
       break;
       case 3:
       color.value="blue"
@@ -140,7 +140,7 @@ onBeforeMount(() => {
 
 .leaflet-zoom-animated{
  
-  transform: translate3d(-198px, -218px, 0px)  !important;
+  // transform: translate3d(-198px, -85px, 0px)  !important;
 }
 
 
@@ -152,4 +152,3 @@ onBeforeMount(() => {
 
 
 </style>
-&

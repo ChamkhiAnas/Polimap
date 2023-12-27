@@ -3,12 +3,12 @@
 
 
             <div class=" relative flex flex-row justify-center items-center">
-              <svg @click="decreasevalue()" class="absolute left-0 cursor-pointer"  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="M11.8 13H15q.425 0 .713-.288T16 12q0-.425-.288-.712T15 11h-3.2l.9-.9q.275-.275.275-.7t-.275-.7q-.275-.275-.7-.275t-.7.275l-2.6 2.6q-.3.3-.3.7t.3.7l2.6 2.6q.275.275.7.275t.7-.275q.275-.275.275-.7t-.275-.7zm.2 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
-              <div class="range relative w-10/12 m-0 m-auto flex justify-center">
-                <input  v-model="slider" @input="updateSliderValuePosition" type="range" min="1" max="11" steps="1"   >
+              <svg @click="decreasevalue()" class="absolute  z-20 left-0 cursor-pointer"  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="M11.8 13H15q.425 0 .713-.288T16 12q0-.425-.288-.712T15 11h-3.2l.9-.9q.275-.275.275-.7t-.275-.7q-.275-.275-.7-.275t-.7.275l-2.6 2.6q-.3.3-.3.7t.3.7l2.6 2.6q.275.275.7.275t.7-.275q.275-.275.275-.7t-.275-.7zm.2 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
+              <div class="range relative z-10 w-10/12  m-0 m-auto flex justify-center">
+                <input class="z-10"  v-model="slider" @input="updateSliderValuePosition" type="range" min="1" max="11" steps="1"   >
                 <div id="sliderValue"><p>{{ years[slider-1] }}</p></div>
               </div>
-              <svg @click="increasevalue()" class="absolute right-0 cursor-pointer"  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="m12 16l4-4l-4-4l-1.4 1.4l1.6 1.6H8v2h4.2l-1.6 1.6zm0 6q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
+              <svg @click="increasevalue()" class="absolute right-0 cursor-pointer z-20 "  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="m12 16l4-4l-4-4l-1.4 1.4l1.6 1.6H8v2h4.2l-1.6 1.6zm0 6q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
 
             </div>
 
@@ -16,7 +16,7 @@
             <h6 class="mt-4">Speed</h6>
             <svg @click="decreaseSpeed()" xmlns="http://www.w3.org/2000/svg" class="block cursor-pointer  mt-4" width="32" height="32" viewBox="0 0 24 24"><path fill="#292c3d" d="m21.5 18l-9-6l9-6zm-10 0l-9-6l9-6z"/></svg>
             <svg @click="animate()" v-if="!isplayed" class="block  mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.475 2 2 6.475 2 12s4.475 10 10 10s10-4.475 10-10S17.525 2 12 2m-2 14.5v-9l6 4.5z"/></svg>
-            <svg @click="stop()" v-if="isplayed" class="block mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-1 14H9V8h2zm4 0h-2V8h2z"/></svg>
+            <svg @click="stop()" v-if="isplayed" class="block  mt-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path fill="#292c3d" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-1 14H9V8h2zm4 0h-2V8h2z"/></svg>
 
             <svg @click="increaseSpeed()" xmlns="http://www.w3.org/2000/svg" class="block cursor-pointer  mt-4" width="32" height="32" viewBox="0 0 24 24"><path fill="#292c3d" d="M2.5 16.125v-8.25q0-.45.3-.725t.7-.275q.125 0 .275.025t.275.125l6.2 4.15q.225.15.338.363T10.7 12q0 .25-.112.463t-.338.362l-6.2 4.15q-.125.1-.275.125t-.275.025q-.4 0-.7-.275t-.3-.725m10 0v-8.25q0-.45.3-.725t.7-.275q.125 0 .275.025t.275.125l6.2 4.15q.225.15.338.363T20.7 12q0 .25-.112.463t-.338.362l-6.2 4.15q-.125.1-.275.125t-.275.025q-.4 0-.7-.275t-.3-.725"/></svg>
             <h6 class="mt-4">{{speed}}x</h6>
@@ -30,7 +30,7 @@
 
 
 .slider-container{
-    width:35vw;
+    width:80vw;
 }
 @mixin rangeThumb {
   width: 0.8rem;
@@ -229,6 +229,24 @@ h6{
 
 }
 
+}
+
+@media screen and (min-width: 768px) {
+.slider-container{
+    width:65vw;
+}
+}
+
+@media screen and (min-width: 1024px) {
+.slider-container{
+    width:45vw;
+}
+}
+
+@media screen and (min-width: 1220px) {
+.slider-container{
+    width:35vw;
+}
 }
 
 
