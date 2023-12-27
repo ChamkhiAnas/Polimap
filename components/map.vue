@@ -28,8 +28,9 @@
 const { data: geojson } = await useFetch('http://localhost:3000/api/geodata');
 const zoom = ref(6);
 const center = ref([30.427755, -9.598107]);
-const color=ref("red")
+const color=ref("#E67E22")
 const updateColor=ref(true)
+const calcValue=ref(1.3)
 
 
 const props = defineProps(['slider'])
@@ -40,7 +41,7 @@ const props = defineProps(['slider'])
 watch(() => props.slider, (newValue) => {
     switch (newValue) {
       case 1:
-      color.value="red"
+      color.value="#E67E22"
       console.log("color value",geoStyle.value.fillColor)
       break;
       case 2:
@@ -58,7 +59,7 @@ watch(() => props.slider, (newValue) => {
       updateColor.value=!updateColor.value;
       break
     default:
-      color.value="red"
+      color.value="#E67E22"
 
       break;
 
@@ -71,7 +72,7 @@ watch(() => props.slider, (newValue) => {
 
 
 const geoStyle = ref({
-  fillColor: "red",
+  fillColor: "#E67E22",
   weight: 1,
   opacity: 1,
   color: 'white',
@@ -84,11 +85,11 @@ const minZoom = ref(4);
 const maxZoom = ref(4);
 
 const adjustedMinZoom = computed(() => {
-  return minZoom.value * 1.3;
+  return minZoom.value * calcValue.value;
 });
 
 const adjustedMaxZoom = computed(() => {
-  return maxZoom.value * 1.3;
+  return maxZoom.value * calcValue.value;
 });
 
 
@@ -110,12 +111,19 @@ const handleResize = () => {
 const updateMapSize = (width) => {
 
 
-  if (width.value < 768) {
+  if (width.value < 430) {
     minZoom.value = 3;
     maxZoom.value = 3;
     console.log('user is updating the viewport', width.value);
     console.log('minZoom.value', minZoom.value);
 
+    calcValue.value=1.6
+
+};
+
+if (width.value > 1024) {
+    minZoom.value = 4;
+    maxZoom.value = 4;
 
 };
 
