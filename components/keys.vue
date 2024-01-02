@@ -44,12 +44,24 @@
 h2{
     color: #292C3D;
     font-family:  $Font-IBM-6;
+    font-size: 0.9rem;
 }
 
 .color-item{
-    width: 0.4rem;
-    height: 2rem;
-    background-color: red;
+    // width: 0.4rem;
+    // height: 2rem;
+    width:1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+
+h2{
+    font-size: 1rem;
+}
+
+
 }
 
 </style>

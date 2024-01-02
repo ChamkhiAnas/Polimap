@@ -47,6 +47,51 @@
 <style lang="scss" scoped>
 @use "~/assets/styling.scss";
 .popup{
+    width: 16em;
+    min-height: 14rem;
+    height: fit-content;
+    background-color: #292C3D;
+}
+
+.popup-heading{
+    h3{
+        color: #FFFFFF;
+        font-size: 0.8rem;
+        font-family: $Font-IBM-4 ;
+        text-align: center;
+    }
+    h1{
+        color: #FFFFFF;
+        font-size: 0.9rem;
+        font-family: $Font-IBM-5 ;
+        text-align: center;
+    }
+    img{
+        width: 6rem;
+    }
+    background-color: #2C2F40;
+    min-height: 2rem;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.popup-content{
+    label{
+    font-family:  $Font-IBM-3;
+    font-size: 0.85rem;
+    color: white;
+    }
+    h6{
+    font-family:   $Font-IBM-5;
+    font-size: 0.9rem;
+    color: #E67E22;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .popup{
     width: 18rem;
     min-height: 15rem;
     height: fit-content;
@@ -55,40 +100,24 @@
 
 .popup-heading{
     h3{
-        color: #FFFFFF;
         font-size: 0.9rem;
-        font-family: $Font-IBM-4 ;
-        text-align: center;
     }
     h1{
-        color: #FFFFFF;
         font-size: 1rem;
-        font-family: $Font-IBM-5 ;
-        text-align: center;
-
     }
-    img{
-        width: 6rem;
-    }
-    background-color: #2C2F40;
     min-height: 4rem;
-    height: fit-content;
-    overflow: hidden;
-}
 
+}
 .popup-content{
     label{
-    font-family:  $Font-IBM-3;
     font-size: 0.93rem;
-    color: white;
     }
     h6{
-    font-family:   $Font-IBM-5;
     font-size: 1rem;
-    color: #E67E22;
-        
-
     }
+}
+
+
 }
 
 </style>
