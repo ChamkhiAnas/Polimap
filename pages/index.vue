@@ -8,11 +8,11 @@
 
 
       <USlideover  class="px-0" v-model="isOpen" :overlay="false"
-      :ui="{ body: { base: 'flex-1 px-0' }, ring: '', rounded:'rounded-none',width:'w-1/6 max-w-sm ',shadow:'shadow-none' }">
+      :ui="{ body: { base: 'flex-1 px-0' }, ring: '', rounded:'rounded-none',width:'w-full ',shadow:'shadow-none' }">
 
       
-      <UCard class="flex flex-col flex-1 slidepanel px-0" :ui="{ body: { base: 'flex-1 px-0' }, ring: '', rounded:'rounded-none',width:'w-1/6 max-w-xs',shadow:'shadow-none',divide: '' }">
-      <Menucard/>
+      <UCard class="flex flex-col flex-1 slidepanel " :ui="{ body: { base: 'flex-1 ',padding:'p-6' }, ring: '', rounded:'rounded-none',width:'w-1/6 max-w-xs',shadow:'shadow-none',divide: '' }">
+      <Menucard @closeMenu="close()"/>
       </UCard>
       </USlideover>
   
@@ -85,6 +85,12 @@
 
     const open = () =>{
       isOpen.value=true
+    }
+
+
+    const close = () => {
+      isOpen.value=false
+
     }
 
 
