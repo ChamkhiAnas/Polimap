@@ -1,7 +1,8 @@
 <template>
-    <div class="map-container">
+  <div>
+    <div v-if="!pending" class="map-container">
       <Map :slider="sliderprop"  class="absolute z-10" />
-      <Slider @UpdateValue="handleSlider" class="z-20 progress-container relative" />
+      <Slider :years="years" @UpdateValue="handleSlider" class="z-20 progress-container relative" />
       <Keys  class="z-20 keys-container relative"  />
       <Popup class="z-30 popup-container" />
       <Navbar :isStatsOpen="isStatsOpen"  @Openmenu="open()"  @SendOpenStats="openStats()"  class="z-20 navbar-container" />
@@ -24,6 +25,12 @@
       </USlideover>
   
     </div>
+
+    <div v-if="pending">
+      Loading ...
+    </div>
+  </div>
+
     </template>
   
   
@@ -91,10 +98,14 @@
     const sliderprop=ref(1);
     const isOpen=ref(false);
     const isStatsOpen=ref(false);
+    const years=ref({});
+    const { userData, setUserData } = useUserData()
+    const pending=ref(false);
 
 
     const handleSlider = (val) =>{
       sliderprop.value=val
+      console.log("slide value",val)
     }
 
     const open = () =>{
@@ -113,6 +124,57 @@
     const closeStats = () => {
       isStatsOpen.value=false
     }
+
+
+    const GetData =async ()=>{
+      pending.value=true
+      try{
+        const { data: ResData,error:dataError,pending } = await useFetch('https://polimap.pockethost.io/api/collections/data/records', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          },
+        });
+        console.log("Data items",ResData)
+        const beginningOfStateValues = ResData.value.items.map(item => item.begining_of_state);
+        const convertedDates = beginningOfStateValues.map(dateString => {
+          const date = new Date(dateString);
+          const year = date.getFullYear();
+          return `${year}`;
+        });
+
+        console.log("years",convertedDates)
+        years.value=convertedDates
+
+        await setUserData(ResData)
+      }
+      catch(error){
+      }
+      finally{
+      pending.value=false
+
+      }
+    }
+
+
+
+     GetData();
+
+
+    //   if (userData.value && userData.value.items) {
+    //     const beginningOfStateValues = userData.value.items.map(item => item.begining_of_state);
+    //     const convertedDates = beginningOfStateValues.map(dateString => {
+    //     const date = new Date(dateString);
+    //     const year = date.getFullYear();
+    //     return `${year}`;
+    //   });
+
+    //   years.value=convertedDates
+    //   pending.value=false
+
+
+    //   console.log("showing the data",convertedDates)
+    //   }
 
 
 

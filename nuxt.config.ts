@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     global: true,
     icons: ['mdi', 'simple-icons']
   },
-
+  ssr: true,
  
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

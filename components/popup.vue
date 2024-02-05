@@ -1,7 +1,7 @@
 <template>
     <div class="popup rounded-lg" >
         <div class="popup-heading rounded-lg flex relative flex-col justify-center items-center px-4 py-4">
-            <h3 class="pt-1">الحزب الفائز</h3>
+            <h3 class="pt-1">الحزب القائد للحكومة</h3>
             <h1 class="pt-0">العدالة والتنمية</h1>
             <img  class="absolute left-0 top-0" src="/shape_left.svg">
             <img  class="absolute right-0 top-0"  src="/shape_right.svg">
@@ -16,12 +16,12 @@
                     <label>رئيس الحكومة :   </label>
                     <h6>عبد الاله بنكيران </h6>
                 </div>
-
+<!-- 
                 <div class="popup-content gap-2 flex flex-row py-1 flex-wrap items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="m10.6 13.4l-2.15-2.15q-.275-.275-.7-.275t-.7.275q-.275.275-.275.7t.275.7L9.9 15.5q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7q-.275-.275-.7-.275t-.7.275zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21z"/></svg>
-                    <label>الحزب الفائز  :   </label>
+                    <label>الحزب  القائد للحكومة  :   </label>
                     <h6>العدالة والتنمية  </h6>
-                </div>
+                </div> -->
 
                 <div class="popup-content gap-2 flex flex-row flex-wrap py-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M3 4v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1m8 3h2v2h-2zm0 4h2v6h-2z"/></svg>
