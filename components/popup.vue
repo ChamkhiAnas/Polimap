@@ -2,7 +2,7 @@
     <div class="popup rounded-lg" >
         <div class="popup-heading rounded-lg flex relative flex-col justify-center items-center px-4 py-4">
             <h3 class="pt-1">الحزب القائد للحكومة</h3>
-            <h1 class="pt-0">العدالة والتنمية</h1>
+            <h1  class="pt-0">{{data[active-1].wining_party}}</h1>
             <img  class="absolute left-0 top-0" src="/shape_left.svg">
             <img  class="absolute right-0 top-0"  src="/shape_right.svg">
         </div>
@@ -13,29 +13,31 @@
 
                 <div class="popup-content gap-2 flex flex-row  py-1 flex-wrap items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M9.775 12q-.9 0-1.5-.675T7.8 9.75l.325-2.45q.2-1.425 1.3-2.363T12 4q1.475 0 2.575.938t1.3 2.362l.325 2.45q.125.9-.475 1.575t-1.5.675zM4 18v-.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13q1.65 0 3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2v.8q0 .825-.587 1.413T18 20H6q-.825 0-1.412-.587T4 18"/></svg>
-                    <label>رئيس الحكومة :   </label>
-                    <h6>عبد الاله بنكيران </h6>
+                    <label>{{ data[active-1].position_head }}  : </label>
+                    <h6 >{{ data[active-1].head_of_government }} </h6>
                 </div>
-<!-- 
-                <div class="popup-content gap-2 flex flex-row py-1 flex-wrap items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="m10.6 13.4l-2.15-2.15q-.275-.275-.7-.275t-.7.275q-.275.275-.275.7t.275.7L9.9 15.5q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7q-.275-.275-.7-.275t-.7.275zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21z"/></svg>
-                    <label>الحزب  القائد للحكومة  :   </label>
-                    <h6>العدالة والتنمية  </h6>
-                </div> -->
 
                 <div class="popup-content gap-2 flex flex-row flex-wrap py-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M3 4v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1m8 3h2v2h-2zm0 4h2v6h-2z"/></svg>
-                    <label>عدد المقاعد البرلمانية  :   </label>
-                    <h6>107  </h6>
+                    <label>الطيف السياسي  :   </label>
+                    <h6 :style="{ color: data[active-1].color }">{{ data[active-1].political_sphere }}  </h6>
                 </div>
 
 
                 <div class="popup-content gap-2 flex flex-row flex-wrap py-1 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20"><path fill="#ffffff" d="M17 7v3h-5.5A2.5 2.5 0 0 0 9 12.5V17H5.5A2.5 2.5 0 0 1 3 14.5V7zm-2.5-4A2.5 2.5 0 0 1 17 5.5V6H3v-.5A2.5 2.5 0 0 1 5.5 3zM10 12.5a1.5 1.5 0 0 1 1.5-1.5h6a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5zm7 4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 0 0 1h4a.5.5 0 0 0 .5-.5M12.5 13a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/></svg>                    
-                    <label>سنة :   </label>
-                    <h6>2016  </h6>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-1.6-.6-3.075t-1.725-2.6L12 12V4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20"/></svg>
+                    <label>بداية الولاية  :   </label>
+                    <h6 >{{ new Date(data[active-1].end_of_state).toISOString().split('T')[0]}} </h6>
                 </div>
 
+                <div class="popup-content gap-2 flex flex-row flex-wrap py-1 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2"/></svg>
+                    <label>نهاية  الولاية  :   </label>
+                    <h6 >{{ new Date(data[active-1].begining_of_state).toISOString().split('T')[0]}}   </h6>
+                </div>
+
+
+                
             </div>
 
 
@@ -84,7 +86,7 @@
     h6{
     font-family:   $Font-IBM-5;
     font-size: 0.9rem;
-    color: #E67E22;
+    color: rgb(219, 219, 219);
     }
 }
 
@@ -113,7 +115,7 @@
     font-size: 0.93rem;
     }
     h6{
-    font-size: 1rem;
+    font-size: 0.9rem;
     }
 }
 
@@ -124,5 +126,20 @@
 
 
 <script setup>
+import { _backgroundColor } from '#tailwind-config/theme';
+
+
+const props=defineProps(["popupdata","sliderprop"])
+
+const data=ref(props.popupdata)
+
+
+const active = computed(() => props.sliderprop)
+
+console.log("active tab",active)
+console.log("data",data.value)
+
+
+
 
 </script>

@@ -4,7 +4,7 @@
       <Map :slider="sliderprop"  :colors="colors" class="absolute z-10" />
       <Slider :key="isFinished" :years="years" @UpdateValue="handleSlider" class="z-20 progress-container relative" />
       <Keys  class="z-20 keys-container relative"  />
-      <Popup class="z-30 popup-container" />
+      <Popup :popupdata="popupdata" :sliderprop="sliderprop" class="z-30 popup-container" />
       <Navbar :isStatsOpen="isStatsOpen"  @Openmenu="open()"  @SendOpenStats="openStats()"  class="z-20 navbar-container" />
 
 
@@ -105,6 +105,7 @@
     const { userData, setUserData } = useUserData()
     const pending=ref(false);
     const colors=ref({})
+    const popupdata=ref({})
     const isFinished=ref(false);
 
 
@@ -131,7 +132,6 @@
     }
 
 
-    const GetData =async ()=>{
       isFinished.value=true
       pending.value=true
       try{
@@ -140,10 +140,13 @@
         headers: {
           'Content-Type': 'application/json',
           },
-        });
+        immediate: true,
+        }
+        )
         console.log("Data items",ResData)
         const beginningOfStateValues = ResData.value.items.map(item => item.begining_of_state);
         colors.value=ResData.value.items.map(item => item.color);
+        popupdata.value= ResData.value.items ;
 
         const convertedDates = beginningOfStateValues.map(dateString => {
           const date = new Date(dateString);
@@ -151,7 +154,7 @@
           return `${year}`;
         });
 
-        console.log("years",convertedDates)
+        console.log("popupdata",popupdata.value)
         years.value=convertedDates
         isFinished.value=false
 
@@ -163,11 +166,10 @@
       pending.value=false
 
       }
-    }
+    
 
 
 
-     GetData();
 
 
 
