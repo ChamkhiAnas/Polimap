@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="!pending" class="map-container">
-      <Map :slider="sliderprop"  class="absolute z-10" />
-      <Slider :years="years" @UpdateValue="handleSlider" class="z-20 progress-container relative" />
+    <div class="map-container">
+      <Map :slider="sliderprop"  :colors="colors" class="absolute z-10" />
+      <Slider :key="isFinished" :years="years" @UpdateValue="handleSlider" class="z-20 progress-container relative" />
       <Keys  class="z-20 keys-container relative"  />
       <Popup class="z-30 popup-container" />
       <Navbar :isStatsOpen="isStatsOpen"  @Openmenu="open()"  @SendOpenStats="openStats()"  class="z-20 navbar-container" />
@@ -26,9 +26,9 @@
   
     </div>
 
-    <div v-if="pending">
-      Loading ...
-    </div>
+    
+
+    
   </div>
 
     </template>
@@ -39,6 +39,8 @@
 .map-container{
     height: 100vh;
     width: 100vw;
+    background-color: #FFFBF5 !important;
+
 }
   
 .progress-container{
@@ -95,12 +97,15 @@
     
     <script setup>
 
+  
     const sliderprop=ref(1);
     const isOpen=ref(false);
     const isStatsOpen=ref(false);
     const years=ref({});
     const { userData, setUserData } = useUserData()
     const pending=ref(false);
+    const colors=ref({})
+    const isFinished=ref(false);
 
 
     const handleSlider = (val) =>{
@@ -127,6 +132,7 @@
 
 
     const GetData =async ()=>{
+      isFinished.value=true
       pending.value=true
       try{
         const { data: ResData,error:dataError,pending } = await useFetch('https://polimap.pockethost.io/api/collections/data/records', {
@@ -137,6 +143,8 @@
         });
         console.log("Data items",ResData)
         const beginningOfStateValues = ResData.value.items.map(item => item.begining_of_state);
+        colors.value=ResData.value.items.map(item => item.color);
+
         const convertedDates = beginningOfStateValues.map(dateString => {
           const date = new Date(dateString);
           const year = date.getFullYear();
@@ -145,6 +153,7 @@
 
         console.log("years",convertedDates)
         years.value=convertedDates
+        isFinished.value=false
 
         await setUserData(ResData)
       }
@@ -160,21 +169,6 @@
 
      GetData();
 
-
-    //   if (userData.value && userData.value.items) {
-    //     const beginningOfStateValues = userData.value.items.map(item => item.begining_of_state);
-    //     const convertedDates = beginningOfStateValues.map(dateString => {
-    //     const date = new Date(dateString);
-    //     const year = date.getFullYear();
-    //     return `${year}`;
-    //   });
-
-    //   years.value=convertedDates
-    //   pending.value=false
-
-
-    //   console.log("showing the data",convertedDates)
-    //   }
 
 
 

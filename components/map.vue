@@ -28,43 +28,52 @@
 const { data: geojson } = await useFetch('http://localhost:3000/api/geodata');
 const zoom = ref(6);
 const center = ref([30.427755, -9.598107]);
-const color=ref("#E67E22")
 const updateColor=ref(true)
 const calcValue=ref(1.3)
 
 
-const props = defineProps(['slider'])
+const props = defineProps(['slider','colors'])
+
+
+const color=ref(props.colors[0])
 
 
 
    // Watch for changes to the prop
 watch(() => props.slider, (newValue) => {
-    switch (newValue) {
-      case 1:
-      color.value="#E67E22"
-      console.log("color value",geoStyle.value.fillColor)
-      break;
-      case 2:
-      geoStyle.value.fillColor ="blue"
-      // updateColor.value=!updateColor.value;
-      break;
-      case 3:
-      color.value="blue"
-      geoStyle.value.fillColor ="blue"
+      console.log("local colors",props.colors[newValue])
+      color.value=props.colors[newValue-1]
+      geoStyle.value.fillColor =props.colors[newValue-1]
       updateColor.value=!updateColor.value;
-      break;
-      case 4:
-      color.value="violet"
-      geoStyle.value.fillColor ="blue"
-      updateColor.value=!updateColor.value;
-      break
-    default:
-      color.value="#E67E22"
-
-      break;
 
 
-    }
+
+    // switch (newValue) {
+    //   case 1:
+    //   color.value="#E67E22"
+    //   console.log("color value",geoStyle.value.fillColor)
+    //   break;
+    //   case 2:
+    //   geoStyle.value.fillColor ="blue"
+    //   // updateColor.value=!updateColor.value;
+    //   break;
+    //   case 3:
+    //   color.value="blue"
+    //   geoStyle.value.fillColor ="blue"
+    //   updateColor.value=!updateColor.value;
+    //   break;
+    //   case 4:
+    //   color.value="violet"
+    //   geoStyle.value.fillColor ="blue"
+    //   updateColor.value=!updateColor.value;
+    //   break
+    // default:
+    //   color.value="#E67E22"
+
+    //   break;
+
+
+    // }
 
 });
 
@@ -72,7 +81,7 @@ watch(() => props.slider, (newValue) => {
 
 
 const geoStyle = ref({
-  fillColor: "#E67E22",
+  fillColor: props.colors[0],
   weight: 1,
   opacity: 1,
   color: 'white',

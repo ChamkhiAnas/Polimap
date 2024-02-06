@@ -36,11 +36,9 @@ const emit = defineEmits(['UpdateValue'])
 const speed=ref(1);
 // const years=ref(['1963','1970','1977','1984','1993','1997','2002','2007','2011','2016','2021']);
 
-const { userData, setUserData } = useUserData()
 const props=defineProps(['years'])
 const years=ref(props.years)
 const max=ref(years.value.length)
-
 console.log("max value",max.value)
 
 
@@ -87,7 +85,7 @@ if (isfinished.value==true) {
 }     
 islooping.value=true;
 loop();
-console.log("max  value outside",max.value)
+// console.log("max  value outside",max.value)
 
 
 
@@ -96,7 +94,7 @@ function loop() {
   if(islooping.value==true){
     isfinished.value=false
     slider.value++;
-    console.log("slider value",slider.value)
+    // console.log("slider value",slider.value)
 
 
     if (slider.value < max.value) {
