@@ -15,15 +15,15 @@
         </h3>
         <p class="mt-6 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#2ecc71" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند بداية الولاية  (2012)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند بداية الولاية     ({{ new Date(data[active-1].begining_of_state).toISOString().split('T')[0].slice(0, 4)}}) : </span>
+            <strong style="direction:rtl"> {{ data[active-1].stats.gdp_start }} </strong>
         </p>
 
 
         <p class="mt-4 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#e74c3c" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند نهاية الولاية  (2016)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند نهاية الولاية ({{ new Date(data[active-1].end_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong class="" style="direction:rtl"> {{ data[active-1].stats.gdp_end }} </strong>
         </p>
 
         <h3 class="mt-8 flex flex-row items-center gap-2">
@@ -33,15 +33,15 @@
 
         <p class="mt-6 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#2ecc71" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند بداية الولاية  (2012)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند بداية الولاية     ({{ new Date(data[active-1].begining_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong> {{ data[active-1].stats.inflation_start }} </strong>
         </p>
 
 
         <p class="mt-4 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#e74c3c" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند نهاية الولاية  (2016)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند نهاية الولاية   ({{ new Date(data[active-1].end_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong>{{ data[active-1].stats.inflation_end }} </strong>
         </p>
 
 
@@ -52,15 +52,15 @@
 
         <p class="mt-6 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#2ecc71" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند بداية الولاية  (2012)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند بداية الولاية    ({{ new Date(data[active-1].begining_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong>{{ data[active-1].stats.netmg_start }}  </strong>
         </p>
 
 
         <p class="mt-4 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#e74c3c" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند نهاية الولاية  (2016)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند نهاية الولاية    ({{ new Date(data[active-1].end_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong>{{ data[active-1].stats.netmg_end }} </strong>
         </p>
 
 
@@ -71,15 +71,15 @@
 
         <p class="mt-6 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#2ecc71" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند بداية الولاية  (2012)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند بداية الولاية    ({{ new Date(data[active-1].begining_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong>{{ data[active-1].stats.un_start }} </strong>
         </p>
 
 
         <p class="mt-4 flex flex-row items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#e74c3c" d="M14.55 16.55L11 13V8h2v4.175l2.95 2.95ZM11 6V4h2v2Zm7 7v-2h2v2Zm-7 7v-2h2v2Zm-7-7v-2h2v2Zm8 9q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z"/></svg>
-            <span>عند نهاية الولاية  (2016)  :</span>
-            <strong>$ 1340 </strong>
+            <span>عند نهاية الولاية    ({{ new Date(data[active-1].end_of_state).toISOString().split('T')[0].slice(0, 4)}}) :</span>
+            <strong>{{ data[active-1].stats.un_end }}  </strong>
         </p>
 
      
@@ -166,6 +166,15 @@ const emit = defineEmits(['closeMenu'])
 const sendCloseMenu = () =>{
     emit('closeMenu')
 }
+
+
+const props=defineProps(["stats","sliderprop"])
+
+const active = computed(() => props.sliderprop)
+
+const data=ref(props.stats)
+
+
 
 
 

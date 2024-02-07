@@ -20,7 +20,7 @@
 
           
           <UCard class="flex flex-col flex-1 slidepanelstats " :ui="{ body: { base: 'flex-1 ' ,padding:'p-6' }, ring: '', rounded:'rounded-none',width:'w-1/6 max-w-xs',background:'#292C3D',shadow:'shadow-none',divide: '' }">
-          <Menucardstats  @closeMenu="closeStats()"/>
+          <Menucardstats :stats="stats"  :sliderprop="sliderprop" @closeMenu="closeStats()"/>
           </UCard>
       </USlideover>
   
@@ -106,6 +106,7 @@
     const pending=ref(false);
     const colors=ref({})
     const popupdata=ref({})
+    const stats=ref({})
     const isFinished=ref(false);
 
 
@@ -147,6 +148,7 @@
         const beginningOfStateValues = ResData.value.items.map(item => item.begining_of_state);
         colors.value=ResData.value.items.map(item => item.color);
         popupdata.value= ResData.value.items ;
+        stats.value=ResData.value.items
 
         const convertedDates = beginningOfStateValues.map(dateString => {
           const date = new Date(dateString);

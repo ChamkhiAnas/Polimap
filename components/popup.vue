@@ -86,7 +86,7 @@
     h6{
     font-family:   $Font-IBM-5;
     font-size: 0.9rem;
-    color: rgb(219, 219, 219);
+    color: white;
     }
 }
 
