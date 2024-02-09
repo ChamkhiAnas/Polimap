@@ -112,7 +112,6 @@
 
     const handleSlider = (val) =>{
       sliderprop.value=val
-      console.log("slide value",val)
     }
 
     const open = () =>{

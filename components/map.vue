@@ -41,40 +41,9 @@ const color=ref(props.colors[0])
 
    // Watch for changes to the prop
 watch(() => props.slider, (newValue) => {
-      console.log("local colors",props.colors[newValue])
       color.value=props.colors[newValue-1]
       geoStyle.value.fillColor =props.colors[newValue-1]
       updateColor.value=!updateColor.value;
-
-
-
-    // switch (newValue) {
-    //   case 1:
-    //   color.value="#E67E22"
-    //   console.log("color value",geoStyle.value.fillColor)
-    //   break;
-    //   case 2:
-    //   geoStyle.value.fillColor ="blue"
-    //   // updateColor.value=!updateColor.value;
-    //   break;
-    //   case 3:
-    //   color.value="blue"
-    //   geoStyle.value.fillColor ="blue"
-    //   updateColor.value=!updateColor.value;
-    //   break;
-    //   case 4:
-    //   color.value="violet"
-    //   geoStyle.value.fillColor ="blue"
-    //   updateColor.value=!updateColor.value;
-    //   break
-    // default:
-    //   color.value="#E67E22"
-
-    //   break;
-
-
-    // }
-
 });
 
 

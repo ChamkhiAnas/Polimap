@@ -3,12 +3,12 @@
 
 
       <div class=" relative flex flex-row justify-center items-center">
-        <svg @click="decreasevalue()" class="absolute  z-20 left-0 cursor-pointer"  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="M11.8 13H15q.425 0 .713-.288T16 12q0-.425-.288-.712T15 11h-3.2l.9-.9q.275-.275.275-.7t-.275-.7q-.275-.275-.7-.275t-.7.275l-2.6 2.6q-.3.3-.3.7t.3.7l2.6 2.6q.275.275.7.275t.7-.275q.275-.275.275-.7t-.275-.7zm.2 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
+        <svg  class="absolute  z-20 left-0 cursor-pointer"  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="M11.8 13H15q.425 0 .713-.288T16 12q0-.425-.288-.712T15 11h-3.2l.9-.9q.275-.275.275-.7t-.275-.7q-.275-.275-.7-.275t-.7.275l-2.6 2.6q-.3.3-.3.7t.3.7l2.6 2.6q.275.275.7.275t.7-.275q.275-.275.275-.7t-.275-.7zm.2 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
         <div class="range relative z-10 w-10/12  m-0 m-auto flex justify-center">
           <input class="z-10"  v-model="slider" @input="updateSliderValuePosition" type="range" min="1" :max="max"  steps="1"   >
           <div id="sliderValue"><p>{{ years[slider-1] }}</p></div>
         </div>
-        <svg @click="increasevalue()" class="absolute right-0 cursor-pointer z-20 "  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="m12 16l4-4l-4-4l-1.4 1.4l1.6 1.6H8v2h4.2l-1.6 1.6zm0 6q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
+        <svg class="absolute right-0 cursor-pointer z-20 "  xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#292c3d" d="m12 16l4-4l-4-4l-1.4 1.4l1.6 1.6H8v2h4.2l-1.6 1.6zm0 6q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
 
       </div>
 
@@ -34,12 +34,10 @@ const isfinished=ref(true);
 const emit = defineEmits(['UpdateValue'])
 
 const speed=ref(1);
-// const years=ref(['1963','1970','1977','1984','1993','1997','2002','2007','2011','2016','2021']);
 
 const props=defineProps(['years'])
 const years=ref(props.years)
 const max=ref(years.value.length)
-console.log("max value",max.value)
 
 
 
@@ -52,26 +50,20 @@ if (speed.value > 0.25) speed.value -= 0.25;
 }
 
 watch(slider, (newValue) => {
-emit('UpdateValue', newValue)
+
 newValue=parseInt(newValue)
-if (newValue>0) {
+if (newValue>0 && newValue <= max.value) {
+emit('UpdateValue', newValue)
+
 const sliderInput = document.querySelector('input[type="range"]');
 const sliderValue = document.getElementById('sliderValue');     
+console.log("New Value",newValue)
 const thumbPosition = ((newValue - sliderInput.min) / (sliderInput.max - sliderInput.min)) * sliderInput.offsetWidth;
 sliderValue.style.right = thumbPosition-60 + 'px';
 }
 
 });
 
-
-const increasevalue = () =>{
-    if (parseInt(slider.value) < max.value) slider.value = parseInt(slider.value)+1;
-}
-
-
-const decreasevalue = () =>{
-    if (parseInt(slider.value) > 1) slider.value = parseInt(slider.value)-1;
-}
 
 
 
@@ -85,16 +77,15 @@ if (isfinished.value==true) {
 }     
 islooping.value=true;
 loop();
-// console.log("max  value outside",max.value)
 
-
+}
 
 function loop() {
   
-  if(islooping.value==true){
+  if(islooping.value==true && slider.value<max.value){
     isfinished.value=false
     slider.value++;
-    // console.log("slider value",slider.value)
+    console.log("slider increment within the loo ",slider.value)
 
 
     if (slider.value < max.value) {
@@ -134,11 +125,14 @@ function loop() {
 
     }
   }
+  else if(islooping.value==true && slider.value>=max.value){
+    slider.value=1
+  }
   
 }
 
 
-}
+
 
 
 const stop = () => {
