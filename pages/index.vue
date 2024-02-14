@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="map-container">
+    <div v-if="!Error" class="map-container">
       <Map :slider="sliderprop"  :colors="colors" class="absolute z-10" />
       <Slider :key="isFinished" :years="years" @UpdateValue="handleSlider" class="z-20 progress-container relative" />
       <Keys  class="z-20 keys-container relative"  />
@@ -26,6 +26,12 @@
   
     </div>
 
+    <div v-if="Error">
+      <Errorcomponent/>
+    </div>
+
+
+
     
 
     
@@ -35,6 +41,12 @@
   
   
   <style lang="scss"  scoped>
+
+  // .error{
+  //   height: 100vh;
+  //   width: 100vw;
+  //   background-color: #FFFBF5 !important;
+  // }
   
 .map-container{
     height: 100vh;
@@ -108,6 +120,7 @@
     const popupdata=ref({})
     const stats=ref({})
     const isFinished=ref(false);
+    const Error=ref(true)
 
 
     const handleSlider = (val) =>{
@@ -158,10 +171,13 @@
         console.log("popupdata",popupdata.value)
         years.value=convertedDates
         isFinished.value=false
+        Error.value=false
 
         await setUserData(ResData)
       }
       catch(error){
+        Error.value=true
+
       }
       finally{
       pending.value=false

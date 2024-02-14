@@ -111,7 +111,7 @@ const visitLinkedin = () =>{
 }
 
 const visitTwitter = () =>{
-    const externalLink = "https://www.linkedin.com/in/anaschamkhi";
+    const externalLink = "https://twitter.com/ChamkhAnas";
     window.open(externalLink, "_blank");
 }
 
